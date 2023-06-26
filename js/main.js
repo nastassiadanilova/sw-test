@@ -323,7 +323,7 @@ function vending(el, height, top) {
     if (scrollPos >= top && scrollPos <= scrollEndPos) {
       var progress = ((scrollPos - top) / (scrollEndPos - top)) * step;
       var frameIndex = Math.floor(progress * vendingImages.length * step);
-console.log(frameIndex)
+
       if (frameIndex <= count) {
         $(el).find(".vending-image")[imgsCur].style.display = "";
         $(el).find(".vending-image")[frameIndex].style.display = "block";
@@ -558,7 +558,7 @@ function open_card(e) {
     load++;
     knotEmoj(8);
 
-    addParallaxEffect("#head1", 2);
+    addParallaxEffect("#head1", 2.1);
     addParallaxEffect("#head2", 7);
     addParallaxEffect("#head3", 4);
     addParallaxEffect("#love", 4);
@@ -652,7 +652,7 @@ function cardLax() {
     scrollY: {
       scale: [
         [card_top - $(window).height(), card_top - $(window).height() / 2],
-        ["0.4", "1"],
+        ["0.4", $(window).width() > 900 ? "1" : "0.7"],
       ],
     },
   });
@@ -808,7 +808,6 @@ function card_scroll() {
         if (sweelinActiveStop == 1) {
           $("#threeDModel").css({
             position: "absolute",
-            // 'top':  $('.card_wrapepr').height() - windowHeight
             top: $("#card-end").offset().top - windowHeight,
           });
         }
@@ -1623,7 +1622,7 @@ function scroll_animation(element) {
 
         if (animItem.classList.contains("_anim-center")) {
           const animItemCenter = animItemOffset + animItemHeight / 2;
-          const windowCenter = window.pageYOffset + window.innerHeight / 2;
+          const windowCenter = window.scrollY + window.innerHeight / 2;
 
           if (
             windowCenter >= animItemCenter - animItemHeight / 2 &&
@@ -1633,15 +1632,15 @@ function scroll_animation(element) {
           }
         } else if (animItem.classList.contains("_anim-top")) {
           if (
-            pageYOffset >= animItemOffset - 1 &&
-            pageYOffset <= animItemOffset + animItemHeight
+            window.scrollY >= animItemOffset - 1 &&
+            window.scrollY <= animItemOffset + animItemHeight
           ) {
             animItem.classList.add("_anim_act");
           }
         } else {
           if (
-            pageYOffset > animItemOffset - animItemPoint &&
-            pageYOffset < animItemOffset + animItemHeight
+            window.scrollY > animItemOffset - animItemPoint - animItemHeight*3/4 &&
+            window.scrollY < animItemOffset + animItemHeight
           ) {
             animItem.classList.add("_anim_act");
           }
