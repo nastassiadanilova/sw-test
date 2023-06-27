@@ -2336,7 +2336,15 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   .input_palceholder {
     top: 0;
   }
-  .input_palceholder.active {}
+  .input_palceholder.active {
+    top: -6px;
+  }
+  ._select, ._select .current {
+    height: 35px;
+  }
+  input[type="checkbox"] + span:before {
+    border-radius: 0;
+  }
 } */
 
 .form_bottom {

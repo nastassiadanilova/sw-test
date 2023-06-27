@@ -952,8 +952,10 @@ function section_scroll() {
       return;
     }
 
-    if (windowScrollTop <= $("#sugar").offset().top + windowHeight) {
+    if (windowScrollTop < Math.ceil($("#sugar").offset().top + windowHeight)) {
       $("#percent").fadeOut();
+    } else {
+      $("#percent").fadeIn();
     }
 
     if (
