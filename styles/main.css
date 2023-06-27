@@ -1543,6 +1543,12 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   transform: rotate(-6deg);
 }
 
+._anim-favorite {
+  z-index: 5;
+  position: absolute;
+  max-width: max(60vw, min(45.421vh, 80.853vw));
+}
+
 .card_btn span {
   position: absolute;
   width: max(46vw, 48vh);
