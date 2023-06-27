@@ -1319,7 +1319,7 @@ function threeD(object, elementSelected) {
     camera.lowerRadiusLimit = camera.upperRadiusLimit = 2;
 
     scene.registerBeforeRender(function () {
-      camera.alpha += 0.01 * scrollTo; // Измените этот параметр для управления скоростью вращения по горизонтали
+      camera.alpha += 0.003 * scrollTo; // Измените этот параметр для управления скоростью вращения по горизонтали
     });
 
     // Создание источника света						# 1
@@ -1460,8 +1460,7 @@ function threeD(object, elementSelected) {
   }
 
   function scrollHandler() {
-    var scrollPosCalc =
-      window.pageYOffset || document.documentElement.scrollTop;
+    var scrollPosCalc = window.scrollY || document.documentElement.scrollTop;
     updateAnimation(scrollPosCalc);
     hasScroll = true;
   }
@@ -1638,7 +1637,6 @@ function scroll_animation(element) {
             animItem.classList.add("_anim_act");
           }
         } else if (animItem.classList.contains("_anim-favorite")) {
-
           if (
             window.scrollY >
               animItemOffset - animItemPoint - animItemHeight / 4 &&
