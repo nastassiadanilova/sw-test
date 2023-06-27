@@ -914,13 +914,13 @@ function backSection() {
 
 function animateNumberPercent(targetNumber, duration) {
   var $resultElement = $("#percent");
-  var startNumber = 99;
+  var startNumber = 0;
   var increment = ((targetNumber - startNumber) / duration) * 10;
   var currentValue = startNumber;
 
   $resultElement.fadeIn();
   var anpInterval = setInterval(function () {
-    currentValue += Math.floor(increment);
+    currentValue += Math.ceil(increment);
     $resultElement.text(currentValue + "%");
     if (currentValue == targetNumber) {
       clearInterval(anpInterval);
@@ -1640,14 +1640,16 @@ function scroll_animation(element) {
         } else if (animItem.classList.contains("_anim-favorite")) {
 
           if (
-            window.scrollY > animItemOffset - animItemPoint - animItemHeight/4 &&
+            window.scrollY >
+              animItemOffset - animItemPoint - animItemHeight / 4 &&
             window.scrollY < animItemOffset + animItemHeight
           ) {
             animItem.classList.add("_anim_act");
           }
         } else {
           if (
-            window.scrollY > animItemOffset - animItemPoint - animItemHeight*3/4 &&
+            window.scrollY >
+              animItemOffset - animItemPoint - (animItemHeight * 3) / 4 &&
             window.scrollY < animItemOffset + animItemHeight
           ) {
             animItem.classList.add("_anim_act");
