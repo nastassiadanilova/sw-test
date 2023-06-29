@@ -519,7 +519,7 @@ input[type="checkbox"] + span:before {
   position: absolute;
   top: calc(50% - var(--size) / 2);
   left: 0;
-  width: 49px;
+  width: var(--size);
   height: var(--size);
   margin-top: -1px;
   border: 3px solid #474747;
@@ -2371,9 +2371,6 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   ._select .current {
     height: 35px;
     line-height: 28px;
-  }
-  input[type="checkbox"] + span:before {
-    border-radius: 0;
   }
   .form_bottom {
     margin-top: 2em;
