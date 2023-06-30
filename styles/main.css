@@ -1539,6 +1539,9 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   z-index: 1000;
 }
 
+.card-title {
+  height: fit-content;
+}
 .card_btn p {
   transform: rotate(-6deg);
 }
