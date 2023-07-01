@@ -666,37 +666,37 @@ function cardLax() {
     },
   });
 
-  // lax.addElements("#button", {
-  //   scrollY: {
-  //     scale: [
-  //       [
-  //         $("#sugar").offset().top - windowHeight * 0.2,
-  //         $("#sugar").offset().top - windowHeight * 0.1,
-  //         $("#sugar").offset().top,
-  //         $("#sugar").offset().top + windowHeight * 0.2,
-  //       ],
-  //       ["0", "1", "1", "0"],
-  //     ],
-  //     rotate: [
-  //       [
-  //         $("#sugar").offset().top - windowHeight * 0.2,
-  //         $("#sugar").offset().top - windowHeight * 0.1,
-  //         $("#sugar").offset().top,
-  //         $("#sugar").offset().top + windowHeight * 0.2,
-  //       ],
-  //       ["0", "6", "6", "0"],
-  //     ],
-  //     opacity: [
-  //       [
-  //         $("#sugar").offset().top - windowHeight * 0.2,
-  //         $("#sugar").offset().top - windowHeight * 0.1,
-  //         $("#sugar").offset().top,
-  //         $("#sugar").offset().top + windowHeight * 0.2,
-  //       ],
-  //       ["0", "1", "1", "0"],
-  //     ],
-  //   },
-  // });
+  lax.addElements("#button", {
+    scrollY: {
+      scale: [
+        [
+          $("#sugar").offset().top - windowHeight * 0.2,
+          $("#sugar").offset().top - windowHeight * 0.1,
+          $("#sugar").offset().top,
+          $("#sugar").offset().top + windowHeight * 0.2,
+        ],
+        ["0", "1", "1", "0"],
+      ],
+      rotate: [
+        [
+          $("#sugar").offset().top - windowHeight * 0.2,
+          $("#sugar").offset().top - windowHeight * 0.1,
+          $("#sugar").offset().top,
+          $("#sugar").offset().top + windowHeight * 0.2,
+        ],
+        ["0", "6", "6", "0"],
+      ],
+      opacity: [
+        [
+          $("#sugar").offset().top - windowHeight * 0.2,
+          $("#sugar").offset().top - windowHeight * 0.1,
+          $("#sugar").offset().top,
+          $("#sugar").offset().top + windowHeight * 0.2,
+        ],
+        ["0", "1", "1", "0"],
+      ],
+    },
+  });
 }
 
 // Inside scroll card
@@ -759,7 +759,7 @@ function card_scroll() {
           });
         }
       } else {
-        $(".card-title").css("position", "static");
+        $(".card-title").css("position", "relative");
       }
       if (windowScrollTop >= $("#anim-title-hide").offset().top) {
         $(".sugar_wrapper_text").fadeIn();
@@ -767,13 +767,11 @@ function card_scroll() {
           $(".last-title").fadeIn();
         }, [1000]);
         setTimeout(() => {
-          console.log("in");
           $("#button").fadeIn();
         }, [1500]);
       } else {
         $(".sugar_wrapper_text").fadeOut();
         $(".last-title").fadeOut();
-        console.log("out");
         $("#button").fadeOut();
       }
 
@@ -988,7 +986,7 @@ function section_scroll() {
       return;
     }
 
-    if (windowScrollTop <  Math.ceil($("#sugar").offset().top + windowHeight)) {
+    if (windowScrollTop < Math.ceil($("#sugar").offset().top + windowHeight)) {
       $("#percent").fadeOut();
     } else {
       $("#percent").fadeIn();
@@ -1498,8 +1496,7 @@ function threeD(object, elementSelected) {
   }
 
   function scrollHandler() {
-    var scrollPosCalc =
-      window.scrollY || document.documentElement.scrollTop;
+    var scrollPosCalc = window.scrollY || document.documentElement.scrollTop;
     updateAnimation(scrollPosCalc);
     hasScroll = true;
   }

@@ -519,7 +519,7 @@ input[type="checkbox"] + span:before {
   position: absolute;
   top: calc(50% - var(--size) / 2);
   left: 0;
-  width: 49px;
+  width: var(--size);
   height: var(--size);
   margin-top: -1px;
   border: 3px solid #474747;
@@ -1408,7 +1408,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   --color: var(--green);
   font-family: var(--font3);
   font-size: max(9.656vw, min(8.6vh, 15.2vw));
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .horizontal .card_text br {
@@ -1571,6 +1571,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 
 .card-title {
   height: fit-content;
+  z-index: 1;
 }
 .card_btn p {
   transform: rotate(-6deg);
@@ -2376,6 +2377,9 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   }
   .form_bottom {
     margin-top: 2em;
+  }
+  .form_checkbox {
+    margin-top: 1em;
   }
 }
 
