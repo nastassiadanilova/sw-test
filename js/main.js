@@ -769,7 +769,7 @@ function card_scroll() {
         setTimeout(() => {
           console.log("in");
           $("#button").fadeIn();
-        }, [2000]);
+        }, [1500]);
       } else {
         $(".sugar_wrapper_text").fadeOut();
         $(".last-title").fadeOut();
@@ -950,13 +950,13 @@ function backSection() {
 
 function animateNumberPercent(targetNumber, duration) {
   var $resultElement = $("#percent");
-  var startNumber = 99;
+  var startNumber = 0;
   var increment = ((targetNumber - startNumber) / duration) * 10;
   var currentValue = startNumber;
 
   $resultElement.fadeIn();
   var anpInterval = setInterval(function () {
-    currentValue += Math.floor(increment);
+    currentValue += Math.ceil(increment);
     $resultElement.text(currentValue + "%");
     if (currentValue == targetNumber) {
       clearInterval(anpInterval);
@@ -988,8 +988,10 @@ function section_scroll() {
       return;
     }
 
-    if (windowScrollTop <= $("#sugar").offset().top + windowHeight) {
+    if (windowScrollTop <  Math.ceil($("#sugar").offset().top + windowHeight)) {
       $("#percent").fadeOut();
+    } else {
+      $("#percent").fadeIn();
     }
 
     if (
@@ -1355,7 +1357,7 @@ function threeD(object, elementSelected) {
     camera.lowerRadiusLimit = camera.upperRadiusLimit = 2;
 
     scene.registerBeforeRender(function () {
-      camera.alpha += 0.01 * scrollTo; // Измените этот параметр для управления скоростью вращения по горизонтали
+      camera.alpha += 0.003 * scrollTo; // Измените этот параметр для управления скоростью вращения по горизонтали
     });
 
     // Создание источника света						# 1
@@ -1497,7 +1499,7 @@ function threeD(object, elementSelected) {
 
   function scrollHandler() {
     var scrollPosCalc =
-      window.pageYOffset || document.documentElement.scrollTop;
+      window.scrollY || document.documentElement.scrollTop;
     updateAnimation(scrollPosCalc);
     hasScroll = true;
   }
