@@ -842,7 +842,8 @@ function card_scroll() {
         if (sweelinActiveStop == 1) {
           $("#threeDModel").css({
             position: "absolute",
-            top: $("#card-end").offset().top - windowHeight,
+            top: "auto",
+            bottom: 0,
           });
         }
       }
@@ -1021,18 +1022,10 @@ function section_scroll() {
         top: "calc(50% - var(--size_h)/ 2)",
       });
     } else {
-      if (windowHeight > $(window).width()) {
-        var posTop = $(".card_wrapepr").height() - windowHeight;
-      } else {
-        var posTop =
-          $(".card_wrapepr").outerHeight() -
-          $(window).width() * 0.5 -
-          windowHeight * 1.6;
-      }
-
       $("#threeDModel").css({
         position: "absolute",
-        top: posTop,
+        bottom: 0,
+        top: "auto",
       });
     }
 
