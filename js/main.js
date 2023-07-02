@@ -986,7 +986,7 @@ function section_scroll() {
       return;
     }
 
-    if (windowScrollTop < Math.ceil($("#sugar").offset().top + windowHeight + 1)) {
+    if (windowScrollTop < Math.ceil($("#sugar").offset().top)) {
       $("#percent").fadeOut();
     } else {
       $("#percent").fadeIn();
