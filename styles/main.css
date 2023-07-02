@@ -1138,6 +1138,11 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
     top: 53.8%;
   }
 }
+@media screen and (min-width: 1920px) and (min-height: 1080px){
+  .machine_active {
+    top: 52%;
+  }
+}
 
 .machine_card {
   overflow: hidden;
@@ -2829,6 +2834,11 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   /* Styles for extra large devices */
   .emoj_img {
     transform: translate3d(min(-0.3vw, max(-0.561vh, -1vw)), 87%, 0px);
+  }
+}
+@media screen and (min-width: 1920px) and (min-height: 1080px){
+  .emoj_img {
+    transform: translate3d(min(-0.3vw, max(-0.561vh, -1vw)), 20%, 0px);
   }
 }
 .emoj_img:not(.active) {

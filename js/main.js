@@ -761,7 +761,10 @@ function card_scroll() {
       } else {
         $(".card-title").css("position", "relative");
       }
-      if (windowScrollTop >= $("#anim-title-hide").offset().top) {
+      if (
+        Math.floor(windowScrollTop) >=
+        Math.floor($("#anim-title-hide").offset().top)
+      ) {
         $(".sugar_wrapper_text").fadeIn();
         setTimeout(() => {
           $(".last-title").fadeIn();
