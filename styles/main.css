@@ -1656,6 +1656,12 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   transform: rotate(-6deg);
 }
 
+._anim-favorite {
+  z-index: 5;
+  position: absolute;
+  max-width: max(60vw, min(45.421vh, 80.853vw));
+}
+
 .card_btn span {
   position: absolute;
   width: max(46vw, 48vh);
@@ -2432,6 +2438,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   min-height: max(5.82vw, min(10.8vh, 19.2vw));
 }
 
+
 @media screen and (max-width: 900px) {
   .form_input {
     min-height: 16px;
@@ -2451,6 +2458,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
     height: 35px;
     line-height: 28px;
   }
+
   input[type="checkbox"] + span:before {
     border-radius: 0;
   }
@@ -2841,6 +2849,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
     transform: translate3d(min(-0.3vw, max(-0.561vh, -1vw)), 20%, 0px);
   }
 }
+
 .emoj_img:not(.active) {
   opacity: 0;
   transition: opacity 0.43s 0.1s;

@@ -565,7 +565,7 @@ function open_card(e) {
 
     // Scroll animation
 
-    scroll_animation(".card_can._one.__anim");
+    scroll_animation("._one.__anim");
   }
 }
 
@@ -1665,6 +1665,14 @@ function scroll_animation(element) {
           if (
             window.scrollY >= animItemOffset - 1 &&
             window.scrollY <= animItemOffset + animItemHeight
+          ) {
+            animItem.classList.add("_anim_act");
+          }
+        } else if (animItem.classList.contains("_anim-favorite")) {
+          if (
+            window.scrollY >
+              animItemOffset - animItemPoint - animItemHeight / 4 &&
+            window.scrollY < animItemOffset + animItemHeight
           ) {
             animItem.classList.add("_anim_act");
           }
