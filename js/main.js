@@ -741,6 +741,43 @@ function card_scroll() {
         $(".sugar_wrapper").css("position", "relative");
       }
 
+      if (windowScrollTop >= $("#small-start").offset().top) {
+        if (
+          windowScrollTop >=
+          $("#anim-title-hide").offset().top -
+            $("#small-start .card-title").height()
+        ) {
+          $(".card-title").css({
+            position: "absolute",
+            bottom: 0,
+            top: "auto",
+          });
+        } else {
+          $(".card-title").css({
+            position: "fixed",
+            top: 0,
+          });
+        }
+      } else {
+        $(".card-title").css("position", "relative");
+      }
+      if (
+        Math.floor(windowScrollTop) >=
+        Math.floor($("#anim-title-hide").offset().top)
+      ) {
+        $(".sugar_wrapper_text").fadeIn();
+        setTimeout(() => {
+          $(".last-title").fadeIn();
+        }, [1000]);
+        setTimeout(() => {
+          $("#button").fadeIn();
+        }, [1500]);
+      } else {
+        $(".sugar_wrapper_text").fadeOut();
+        $(".last-title").fadeOut();
+        $("#button").fadeOut();
+      }
+
       if (windowScrollTop >= $("#sugar").offset().top - windowHeight / 2) {
         $("#sugar-nav").addClass(a);
       } else {
@@ -808,7 +845,8 @@ function card_scroll() {
         if (sweelinActiveStop == 1) {
           $("#threeDModel").css({
             position: "absolute",
-            top: $("#card-end").offset().top - windowHeight,
+            top: "auto",
+            bottom: 0,
           });
         }
       }
@@ -952,7 +990,7 @@ function section_scroll() {
       return;
     }
 
-    if (windowScrollTop < Math.ceil($("#sugar").offset().top + windowHeight)) {
+    if (windowScrollTop < Math.ceil($("#sugar").offset().top)) {
       $("#percent").fadeOut();
     } else {
       $("#percent").fadeIn();
@@ -987,18 +1025,10 @@ function section_scroll() {
         top: "calc(50% - var(--size_h)/ 2)",
       });
     } else {
-      if (windowHeight > $(window).width()) {
-        var posTop = $(".card_wrapepr").height() - windowHeight;
-      } else {
-        var posTop =
-          $(".card_wrapepr").outerHeight() -
-          $(window).width() * 0.5 -
-          windowHeight * 1.6;
-      }
-
       $("#threeDModel").css({
         position: "absolute",
-        top: posTop,
+        bottom: 0,
+        top: "auto",
       });
     }
 
