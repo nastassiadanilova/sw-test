@@ -1002,6 +1002,11 @@ function section_scroll() {
           right: 0,
         });
       }
+    } else {
+      $(".list-logo").css({
+        position: "static",
+        right: 0,
+      });
     }
 
     if (windowScrollTop <= $("#sugar-end").offset().top) {
