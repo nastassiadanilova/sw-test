@@ -571,8 +571,6 @@ function cardLax() {
   var sugar = $("#pink-start"),
     sugar_top = sugar.offset().top;
 
-  var windowHeight = $(this).height();
-
   lax.addElements(".card_elips.active", {
     scrollY: {
       translateY: [
@@ -636,7 +634,7 @@ function card_scroll() {
         $(".card_sugar").css("position", "static");
       }
       if (
-        windowScrollTop >= sugarStart + windowHeight * 1.1 &&
+        windowScrollTop >= sugarStart + windowHeight * 1.2 &&
         windowWidht <= 900
       ) {
         $(".card_sugar-title").css({
@@ -989,22 +987,21 @@ function section_scroll() {
       });
     }
 
-    if (
-      windowWidht <= 900 &&
-      windowScrollTop > $("#list-start").offset().top - windowHeight * 0.3 &&
-      windowScrollTop < $("#card-end").offset().top
-    ) {
-      $(".list-logo").css({
-        position: "fixed",
-        top: 0,
-        maxWidth: "50%",
-        right: 0,
-      });
-    } else {
-      $(".list-logo").css({
-        position: "static",
-        maxWidth: "var(--logo)",
-      });
+    if (windowWidht <= 900) {
+      if (
+        windowScrollTop > $("#list-start").offset().top &&
+        windowScrollTop < $("#card-end").offset().top
+      ) {
+        $(".list-logo").css({
+          position: "fixed",
+          right: "var(--bone)",
+        });
+      } else {
+        $(".list-logo").css({
+          position: "absolute",
+          right: 0,
+        });
+      }
     }
 
     if (windowScrollTop <= $("#sugar-end").offset().top) {
