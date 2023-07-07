@@ -269,8 +269,9 @@ input:not([type="checkbox"], [type="radio"], [type="submit"], [type="range"]),
 textarea {
   width: 100%;
   min-height: max(5.82vw, min(10.8vh, 19.2vw));
-  font-size: max(2.646vw, min(3.01vh, 5.333vw));
-  font-weight: 500;
+  font-size: max(2.508vw, min(2.737vh, 5.667vw));
+  font-weight: 600;
+  line-height: 119%;
   text-overflow: ellipsis;
   border-bottom: max(0.198vw, min(0.451vh, 0.8vw)) solid rgba(0, 0, 0);
 }
@@ -397,7 +398,9 @@ textarea {
 }
 
 ._select .current.placeholder {
-  font-size: max(2.646vw, min(3.01vh, 5.333vw));
+  font-size: max(2.508vw, min(2.737vh, 5.667vw));
+  font-weight: 600;
+  line-height: 119%;
   padding-top: 0.34vw;
 }
 
