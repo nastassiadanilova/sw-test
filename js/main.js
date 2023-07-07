@@ -62,10 +62,8 @@ $(document).ready(function () {
 
   if ("ontouchstart" in window || navigator.maxTouchPoints) {
     $("#cursor-media").hide();
-    console.log("Используется тачскрин");
   } else {
     $("#cursor-media").show();
-    console.log("Используется мышь");
   }
 
   cursorHover("._btn");
@@ -84,7 +82,7 @@ $(document).ready(function () {
 
   $(document).on(
     "mouseenter mouseleave",
-    "a, ._btn, .nav_triger, .nav_triger li, .machine_active, input, #threeDModel, ._select, textarea, label",
+    "a, ._btn, .nav_triger, .nav_triger li, .machine_active, input, #threeDModel, ._select, textarea, label, .machine_cards .machine_card",
     function (e) {
       if (e.type === "mouseenter") {
         $("#cursor").addClass("hover");
@@ -99,12 +97,20 @@ $(document).ready(function () {
     ".machine_cards .machine_card",
     function (e) {
       if (e.type === "mouseenter") {
-        $("#cursor").removeClass(a).find("span").text("swipe");
+        $("#cursor").removeClass("active").find("span").text("drag");
       } else {
-        $("#cursor").addClass(a).find("span").text("scroll");
+        $("#cursor").addClass("active").find("span").text("");
       }
     }
   );
+
+  $(document).on("mouseenter mouseleave", ".machine_active", function (e) {
+    if (e.type === "mouseenter") {
+      $("#cursor").removeClass("active").find("span").text("click");
+    } else {
+      $("#cursor").addClass("active").find("span").text("");
+    }
+  });
 
   // Move element with cursor.
 
@@ -227,14 +233,6 @@ $(window).scroll(function () {
     $("#food-nav").addClass(a);
   } else {
     $("#food-nav").removeClass(a);
-  }
-
-  var bottomOffset = 50; // Допустимый отступ от конца страницы
-
-  if (windowScrollTop >= $(document).height() - windowHeight - bottomOffset) {
-    $("#cursor").addClass(a);
-  } else {
-    $("#cursor").removeClass(a);
   }
 });
 
@@ -422,55 +420,6 @@ function knotLax() {
   lax.addDriver("scrollY", function () {
     return window.scrollY;
   });
-
-  // var machine = $('#machine'),
-  // 	machine_top = $('#machine').offset().top;
-
-  // var windowHeight = $(window).height();
-
-  // lax.addElements('#machine-active .machine_card span', {
-  //   scrollY: {
-  //   	scale: [
-  //   		[machine_top, machine_top + windowHeight * .2],
-  //     	['0', '1']
-  //   	],
-  //   }
-  // })
-
-  // lax.addElements('#machine-active .machine_card_name', {
-  //   scrollY: {
-  //   	translateY: [
-  //   		[machine_top + windowHeight * .18, machine_top + windowHeight * .4],
-  //     	['-elHeight - 2', '0']
-  //   	],
-  //   }
-  // })
-
-  // lax.addElements('#machine-active .machine_card_img', {
-  //   scrollY: {
-  //   	scale: [
-  //   		[machine_top + windowHeight * .35, machine_top + windowHeight * .55],
-  //     	['0', '1']
-  //   	],
-  //   	opacity: [
-  //   		[machine_top + windowHeight * .4, machine_top + windowHeight * .5],
-  //     	['0', '1']
-  //   	],
-  //   }
-  // })
-
-  // lax.addElements('#machine-cards', {
-  //   scrollY: {
-  //   	scale: [
-  //   		[machine_top + windowHeight * .6, machine_top + windowHeight * .8],
-  //     	['0', '1']
-  //   	],
-  //   	opacity: [
-  //   		[machine_top + windowHeight * .65, machine_top + windowHeight * .75],
-  //     	['0', '1']
-  //   	],
-  //   }
-  // })
 
   lax.addElements("#text-rotate", {
     scrollY: {
@@ -665,38 +614,6 @@ function cardLax() {
       ],
     },
   });
-
-  lax.addElements("#button", {
-    scrollY: {
-      scale: [
-        [
-          $("#sugar").offset().top - windowHeight * 0.2,
-          $("#sugar").offset().top - windowHeight * 0.1,
-          $("#sugar").offset().top,
-          $("#sugar").offset().top + windowHeight * 0.2,
-        ],
-        ["0", "1", "1", "0"],
-      ],
-      rotate: [
-        [
-          $("#sugar").offset().top - windowHeight * 0.2,
-          $("#sugar").offset().top - windowHeight * 0.1,
-          $("#sugar").offset().top,
-          $("#sugar").offset().top + windowHeight * 0.2,
-        ],
-        ["0", "6", "6", "0"],
-      ],
-      opacity: [
-        [
-          $("#sugar").offset().top - windowHeight * 0.2,
-          $("#sugar").offset().top - windowHeight * 0.1,
-          $("#sugar").offset().top,
-          $("#sugar").offset().top + windowHeight * 0.2,
-        ],
-        ["0", "1", "1", "0"],
-      ],
-    },
-  });
 }
 
 // Inside scroll card
@@ -704,18 +621,30 @@ function cardLax() {
 function card_scroll() {
   $(window).scroll(function () {
     var windowHeight = $(this).height();
+    var windowWidht = $(this).width();
     var windowScrollTop = $(this).scrollTop();
 
     if (sugarActive == 1) {
       var sugarStart = $("#sugar-start").offset().top;
 
-      if (windowScrollTop >= sugarStart) {
+      if (windowScrollTop >= sugarStart && windowWidht > 900) {
         $(".card_sugar").css({
           position: "fixed",
           top: 0,
         });
       } else {
         $(".card_sugar").css("position", "static");
+      }
+      if (
+        windowScrollTop >= sugarStart + windowHeight * 1.1 &&
+        windowWidht <= 900
+      ) {
+        $(".card_sugar-title").css({
+          position: "fixed",
+          top: 0,
+        });
+      } else {
+        $(".card_sugar-title").css("position", "static");
       }
 
       var range = windowScrollTop / 4; // Диапазон прокрутки, при котором изменяется масштаб
@@ -731,6 +660,11 @@ function card_scroll() {
       val = Math.max(minVal, Math.min(val, maxVal));
 
       pink_anim(val);
+      if (windowScrollTop >= $("#pink-start").offset().top + windowHeight) {
+        $("#threeDModel").css({ zIndex: 1 });
+      } else {
+        $("#threeDModel").css({ zIndex: 0 });
+      }
 
       if (windowScrollTop >= $("#small-start").offset().top) {
         $(".sugar_wrapper").css({
@@ -766,6 +700,15 @@ function card_scroll() {
         Math.floor($("#anim-title-hide").offset().top)
       ) {
         $(".sugar_wrapper_text").fadeIn();
+
+        if (
+          windowScrollTop + windowHeight >= $("#rainbow-start").offset().top &&
+          $("#rainbow-start").offset().top
+        ) {
+          $(".sugar_wrapper_text")
+            .appendTo("#small-end")
+            .css({ position: "absolute" });
+        }
         setTimeout(() => {
           $(".last-title").fadeIn();
         }, [1000]);
@@ -869,13 +812,13 @@ function pink_anim(val) {
   }
 }
 
-function appendShadow(item, x, y, col) {
+function appendShadow(item, x, y, color) {
   var textShadow = "";
 
   if (item.css("text-shadow") !== "none") {
     textShadow = item.css("text-shadow") + ", ";
   }
-  textShadow = textShadow + x + "px " + y + "px " + col;
+  textShadow = textShadow + x + "px " + y + "px " + color;
 
   item.css("text-shadow", textShadow);
 }
@@ -900,7 +843,6 @@ function nextSection() {
     sweelin_open();
     sectionActive = 1;
     $("html").css("overflow", "auto");
-    $(".sugar_wrapper_text").fadeOut();
   }, speed);
 
   setTimeout(function () {
@@ -939,7 +881,6 @@ function backSection() {
   $("#sweelin").hide();
   $(".card_sugar").fadeIn(1000);
   $("#sweelin").hide();
-  $(".sugar_wrapper_text").fadeIn();
 
   sweelinActive = 0;
   sweelinActiveStop = 0;
@@ -975,6 +916,7 @@ function section_scroll() {
   $(window).scroll(function () {
     var windowHeight = $(this).height();
     var windowScrollTop = $(this).scrollTop();
+    var windowWidht = $(this).width();
 
     if (sectionActive == 1) {
       if (
@@ -1044,6 +986,24 @@ function section_scroll() {
       $(".card_rainbow").css({
         position: "absolute",
         top: $(".card_wrapepr").height() - windowHeight / 2,
+      });
+    }
+
+    if (
+      windowWidht <= 900 &&
+      windowScrollTop > $("#list-start").offset().top - windowHeight * 0.3 &&
+      windowScrollTop < $("#card-end").offset().top
+    ) {
+      $(".list-logo").css({
+        position: "fixed",
+        top: 0,
+        maxWidth: "50%",
+        right: 0,
+      });
+    } else {
+      $(".list-logo").css({
+        position: "static",
+        maxWidth: "var(--logo)",
       });
     }
 
