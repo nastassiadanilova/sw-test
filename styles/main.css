@@ -1603,7 +1603,8 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
     flex-wrap: wrap;
   }
   .card_sugar-title {
-    font-size: max(8.108vw, min(2.737vh, 5.667vw));
+    font-size: max(6.68vw, min(2.737vh, 5.667vw));
+    line-height: 128%;
     max-width: 100%;
     left: var(--bone);
     right: var(--bone);
@@ -1656,12 +1657,22 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   line-height: 119%;
 }
 
+.horizontal .card_can {
+  font-size: max(6.68vw, min(2.737vh, 5.667vw));
+  line-height: 128%;
+}
+
 .last-title {
   position: relative;
   z-index: 1;
   font-size: max(2.508vw, min(2.737vh, 5.667vw));
   font-weight: 600;
   line-height: 119%;
+}
+
+.horizontal .last-title {
+  font-size: max(6.68vw, min(2.737vh, 5.667vw));
+  line-height: 128%;
 }
 
 .card.horizontal .card_can br {
@@ -1829,7 +1840,6 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   width: 100%;
   z-index: 1;
   top: 0;
-  max-width: (19.188vw, min(34.163vh, 60.853vw))
 }
 .horizontal .list-logo {
   position: absolute;
@@ -2007,6 +2017,8 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 
 .horizontal .sweelin_li_text {
   width: 100%;
+  font-size: max(6.68vw, min(2.737vh, 5.667vw));
+  line-height: 128%;
 }
 
 .sweelin_li_img_wrapper {
@@ -2346,6 +2358,13 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 .how_li_text p {
   max-width: max(23.347vw, min(30.718vh, 54.667vw));
   line-height: 1.09;
+  font-weight: 600;
+  font-size: max(2.508vw, min(2.737vh, 5.667vw));
+}
+
+.horizontal .how_li_text p {
+  font-size: max(6.68vw, min(2.737vh, 5.667vw));
+  line-height: 128%;
 }
 
 .how_end {
@@ -2525,6 +2544,11 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   font-size: max(2.508vw, min(2.737vh, 5.667vw));
   font-weight: 600;
   line-height: 119%;
+}
+
+.horizontal .form_caption {
+  font-size: max(6.68vw, min(2.737vh, 5.667vw));
+  line-height: 128%;
 }
 
 .form_inputs {
