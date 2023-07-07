@@ -501,7 +501,7 @@ input[type="checkbox"] + span {
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 80px;
+  padding-left: 62px;
   font-size: max(1.984vw, min(2.09vh, 3.733vw));
   font-weight: 500;
   line-height: 1.09;
