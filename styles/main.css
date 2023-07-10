@@ -1971,9 +1971,9 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 .sweelin_title {
   --color: #60b6d1;
   padding-top: max(6.944vw, min(17vh, 23.333vw));
-  font-size: max(9.656vw, min(8.55vh, 15.2vw));
   font-family: var(--font3);
-  line-height: 1;
+  font-size: max(7.3vw, min(8.6vh, 15.2vw));
+  line-height: 104%;
 }
 
 .sweelin:not(.horizontal) .sweelin_title:not(:first-child) {
@@ -2384,10 +2384,10 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 }
 
 .how_end_text {
-  font-size: max(9.656vw, min(8.55vh, 15.2vw));
   font-family: var(--font3);
   white-space: nowrap;
-  line-height: 1;
+  font-size: max(7.3vw, min(8.6vh, 15.2vw));
+  line-height: 104%;
 }
 
 .how_end_img {
@@ -2533,9 +2533,9 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 }
 
 .form_title {
-  font-size: max(11.508vw, min(8.55vh, 15.2vw));
   font-family: var(--font3);
-  line-height: 1;
+  font-size: max(7.3vw, min(8.6vh, 15.2vw));
+  line-height: 104%;
 }
 
 .form_title i {
