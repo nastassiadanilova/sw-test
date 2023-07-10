@@ -2040,6 +2040,9 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   z-index: 1;
 }
 
+._l-one .sweelin_li_img {
+  scale: 1.2;
+}
 .sweelin_li_poligon {
   position: absolute;
   top: 50%;
@@ -2652,8 +2655,13 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   }
   ._select,
   ._select .current {
-    height: 35px;
-    line-height: 28px;
+    height: 35.5px;
+    line-height: 21px;
+  }
+
+  textarea {
+    padding-top: 22.5px;
+    margin-top: 3px
   }
 
   .form_bottom {
