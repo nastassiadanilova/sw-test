@@ -83,8 +83,9 @@ function form_send(i) {
     errors.message = "White your message";
   }
 
-  if (Object.keys(errors)) {
+  if (!!Object.keys(errors).length) {
     display_errors(errors);
+    return;
   }
 
   if (select.val() != "placeholder") {
@@ -95,7 +96,7 @@ function form_send(i) {
     type: "POST",
     url: "/apps/send.app.php",
     data: {
-      name,
+      name: input,
       email,
       message,
       updates,
