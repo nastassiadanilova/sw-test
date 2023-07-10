@@ -93,6 +93,12 @@ textarea::placeholder {
   color: var(--color);
   font-family: var(--family);
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 45px var(--s1) inset !important;
+}
 
 /* Null. */
 
@@ -2575,8 +2581,6 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   width: 100%;
   min-height: max(5.82vw, min(10.8vh, 19.2vw));
 }
-
-
 
 .form_bottom {
   grid-template-columns: repeat(2, 45%);
