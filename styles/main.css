@@ -2649,6 +2649,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   }
   .input_palceholder {
     top: 0;
+    font-size: max(6.68vw, min(2.737vh, 5.667vw));
   }
   .input_palceholder.active {
     top: -6px;
@@ -2657,6 +2658,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   ._select .current {
     height: 35.5px;
     line-height: 21px;
+    font-size: max(6.68vw, min(2.737vh, 5.667vw)) !important;
   }
 
   textarea {
