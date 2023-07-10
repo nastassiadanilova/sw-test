@@ -16,11 +16,27 @@ function preload_btn(i) {
   return btn_clone;
 }
 
-function display_errors(errors) {
-  const input_name = $("#name");
-  const input_email = $("#email");
-  const input_message = $("#message");
+function validateEmail(attachErrorNow) {
+  const email = input_email.val();
+  const emailRegexp =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+  let error = "";
+  if (!email.match(emailRegexp)) {
+    error = "Enter correct email";
+  }
+  if (!email) {
+    error = "Enter your email";
+  }
+  if (attachErrorNow) {
+    if (error) {
+      input_email.siblings(".input_error").text(error);
+    }
+  } else {
+    return error;
+  }
+}
+function display_errors(errors) {
   if (errors.name) {
     input_name.siblings(".input_error").text(errors.name);
   }
@@ -39,6 +55,9 @@ function on_form_input(inputName) {
   if (errorText) {
     touchedInput.text("");
   }
+  if (inputName === "email") {
+    validateEmail(true);
+  }
 }
 
 function form_send(i) {
@@ -52,16 +71,13 @@ function form_send(i) {
   const selected = false;
 
   const errors = {};
-  const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   if (!input) {
     errors.name = "Enter your name";
   }
-  if (!email.match(emailRegexp)) {
-    errors.email = "Enter correct email";
-  }
-  if (!email) {
-    errors.email = "Enter your email";
+  const emailError = validateEmail();
+  if (emailError) {
+    errors.email = emailError;
   }
   if (!message) {
     errors.message = "White your message";
