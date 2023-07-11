@@ -1193,6 +1193,7 @@ function sweelin_open(scrollTo) {
   scroll_animation(".sweelin_li_img_wrapper.__anim");
   scroll_animation(".how_li_img_wrapper.__anim");
   scroll_animation(".how_end_img.__anim");
+  console.log('heeer');
 }
 
 function sweelin_scroll() {

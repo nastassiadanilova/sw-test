@@ -2229,10 +2229,6 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   justify-content: space-between;
   align-items: center;
 }
-.bag_card_content picture {
-  max-width: 50vw;
-  margin-left: -10vw;
-}
 .horizontal .bag_card_content {
   flex-direction: column;
 }
@@ -2244,6 +2240,26 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 .bag_card_title * {
   color: var(--primary);
   margin-right: 10px;
+}
+.bag_card_image {
+  max-width: 50vw;
+  margin-left: -10vw;
+  position: relative;
+}
+.bag_card_flag {
+  position: absolute;
+}
+.bag_card_flag._one {
+  top: 40%;
+  left: 32%;
+  transform: translate(-50%, -50%);
+}
+.bag_card_flag._two {
+  left: 54%;
+  top: 4%;
+  transform: translate(-50%, -50%);
+  height: 79px;
+  width: 154px;
 }
 
 .how_title {
