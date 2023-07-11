@@ -1172,6 +1172,35 @@ $("#nav").mouseleave(function () {
   timeout = setTimeout(nav_hide, 3000);
 });
 
+function bag_animation() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            $("#bag_with_spoon").css({
+              backgroundSize: "contain",
+              left: "0",
+              backgroundPosition: "center bottom",
+            });
+          }, 500);
+          setTimeout(() => {
+            $(".bag_card_flag").fadeIn();
+          }, 2000);
+        } else {
+          $("#bag_with_spoon").css({
+            backgroundSize: "200%",
+            left: "9.5%",
+            backgroundPosition: "left bottom",
+          });
+          $(".bag_card_flag").fadeOut();
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  observer.observe(document.querySelector("#bag_with_spoon"));
+}
 // Svin_open
 
 function sweelin_open(scrollTo) {
@@ -1193,7 +1222,7 @@ function sweelin_open(scrollTo) {
   scroll_animation(".sweelin_li_img_wrapper.__anim");
   scroll_animation(".how_li_img_wrapper.__anim");
   scroll_animation(".how_end_img.__anim");
-  console.log('heeer');
+  bag_animation();
 }
 
 function sweelin_scroll() {
