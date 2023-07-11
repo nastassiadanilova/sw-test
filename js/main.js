@@ -1226,12 +1226,6 @@ function sweelin_scroll() {
       $("#contact-nav").removeClass(a);
     }
 
-    if (windowScrollTop >= $("#how").offset().top + windowHeight * 0.8) {
-      $("#how").addClass(a);
-    } else {
-      $("#how").removeClass(a);
-    }
-
     if (windowScrollTop >= $("#contact").offset().top - 1) {
       $("#cursor").addClass(a);
     }
@@ -1243,28 +1237,6 @@ function sweelin_scroll() {
 function sweelin_lax() {
   lax.addDriver("scrollY", function () {
     return window.scrollY;
-  });
-
-  var how = $("#how"),
-    how_top = how.offset().top,
-    windowHeight = $(this).height();
-
-  lax.addElements(".how_sugar_spoon", {
-    scrollY: {
-      scale: [
-        [how_top - windowHeight * 0.2, how_top + windowHeight * 0.4],
-        [".6", "1"],
-      ],
-      rotate: [
-        [how_top - windowHeight * 0.2, how_top + windowHeight * 0.4],
-        ["-40", "0"],
-      ],
-      translateX: [
-        [how_top - windowHeight * 0.2, how_top + windowHeight * 0.4],
-        ["screenWidth * .43", "0"],
-      ],
-      translateY: [[0], ["-elHeight / 2"]],
-    },
   });
 }
 
