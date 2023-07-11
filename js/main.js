@@ -1185,7 +1185,7 @@ function bag_animation() {
             });
           }, 500);
           setTimeout(() => {
-            $(".bag_card_flag").fadeIn();
+            $(".bag_card_flag").show();
           }, 2000);
         } else {
           $("#bag_with_spoon").css({
@@ -1193,7 +1193,7 @@ function bag_animation() {
             left: "9.5%",
             backgroundPosition: "left bottom",
           });
-          $(".bag_card_flag").fadeOut();
+          $(".bag_card_flag").hide();
         }
       });
     },
