@@ -1183,10 +1183,10 @@ function bag_animation() {
               left: "0",
               backgroundPosition: "center bottom",
             });
-          }, 500);
+          }, 1500);
           setTimeout(() => {
             $(".bag_card_flag").show();
-          }, 2000);
+          }, 3500);
         } else {
           $("#bag_with_spoon").css({
             backgroundSize: "200%",
