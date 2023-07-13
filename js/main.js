@@ -1178,22 +1178,11 @@ function bag_animation() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            $("#bag_with_spoon").css({
-              backgroundSize: "contain",
-              left: "0",
-              backgroundPosition: "center bottom",
-            });
-          }, 1500);
+            $("#bag_image").addClass("animate");
+          }, 1000);
           setTimeout(() => {
-            $(".bag_card_flag").show();
-          }, 3500);
-        } else {
-          $("#bag_with_spoon").css({
-            backgroundSize: "200%",
-            left: "9.5%",
-            backgroundPosition: "left bottom",
-          });
-          $(".bag_card_flag").hide();
+            $(".bag_card_flag").fadeIn();
+          }, 3000);
         }
       });
     },
