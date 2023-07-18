@@ -1182,7 +1182,7 @@ function bag_animation() {
           }, 1000);
           setTimeout(() => {
             $(".bag_card_flag").fadeIn();
-          }, 3000);
+          }, 2300);
         }
       });
     },

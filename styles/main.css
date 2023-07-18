@@ -169,6 +169,7 @@ i {
 .loader {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   position: fixed;
   top: 0;
   left: 0;
@@ -680,6 +681,18 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 
 .footer_logo {
   margin-right: -4.431vw;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amai_logo {
+  padding-right: 1.2vw;
+  border-right: 1px solid var(--primary);
+}
+
+.footer_sweelin_logo {
+  padding-left: 1.2vw; */
 }
 
 .footer_bottom {
@@ -2338,7 +2351,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
 }
 
 .bag_image {
-  transition: all 2s ease-in-out;
+  transition: all 1.3s ease-in-out;
   transform: scale(2);
   position: relative;
   width: 100%;
@@ -2518,7 +2531,7 @@ input[type="checkbox"]:not([readonly]):checked + span:before {
   }
 }
 
-@media screen and (min-width: 1920px) and (max-height: 1080px) {
+@media screen and (min-width: 1920px) {
   .bag_card_flag._one {
     bottom: 64%;
     left: 18.4%;
